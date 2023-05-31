@@ -20,10 +20,9 @@ int main()
     printf("%s\n",welcome);
     printf("Snake = s, Water = w, Gun = g, Quit = q \n");
 
-    do{
+    while(1){
         char userChoice, randChoice;
-        printf("Enter your choice: ");
-        scanf("%c",&userChoice);
+        
 
         srand(time(0));
         int number = rand()%100 +1;
@@ -36,28 +35,33 @@ int main()
         else{
             randChoice = 'g';
         }
+
+        printf("Enter your choice: ");
+        scanf(" %c",&userChoice);
         
         
 
         if(userChoice == 'q'){
             break;
         }
-        else{
-            int result = snakeWaterGun(userChoice, randChoice);
+        
+        int result = snakeWaterGun(userChoice, randChoice);
+        
+        printf("Comp chose %c, you chose %c \n",randChoice, userChoice);
 
-            if(result == 0){
-                printf("Match Drawn! \n");
-            }
-            else if(result == 1){
-                printf("You won! \n");
-            }
-            else{
-                printf("You Lost!\n");     
-
-            }
+        if(result == 0){
+            
+            printf("Match Drawn! \n");
         }
+        else if(result == 1){
+            printf("You won! \n");
+        }
+        else{
+            printf("You Lost!\n");     
+
+        }
+        
     }
-    while(1);
 
 
     return 0;
